@@ -1,0 +1,4 @@
+# WINDOWS ONLY! fd, lazygit, ripgrep
+tools/
+
+lazy-lock.json
