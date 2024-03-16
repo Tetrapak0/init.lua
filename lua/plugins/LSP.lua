@@ -21,7 +21,7 @@ return {
             "MasonLog"
         },
         keys = {
-            {"<leader>EM", "<cmd>Mason<cr>", desc = "Mason", keymap_opts},
+            {"<leader>UM", "<cmd>Mason<cr>", desc = "Mason", keymap_opts},
         },
         dependencies = {"williamboman/mason-lspconfig.nvim"},
         config = function()
@@ -39,6 +39,7 @@ return {
         dependencies = {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
+            "hrsh7th/cmp-nvim-lsp-signature-help"
         },
         config = function()
             local cmp = require("cmp")
@@ -52,6 +53,7 @@ return {
                     ["<Tab>"] = cmp.mapping.confirm({select = true}),
                 }),
                 sources = cmp.config.sources({
+                    {name = "nvim_lsp_signature_help"},
                     {name = "buffer"},
                     {name = "path"}
                 })
@@ -173,6 +175,6 @@ return {
                 }
             })
         end
-    }
+    },
 }
 

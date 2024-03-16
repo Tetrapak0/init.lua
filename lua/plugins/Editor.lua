@@ -163,6 +163,7 @@ return {
     },
     {
         "HiPhish/rainbow-delimiters.nvim",
+        event = LazyFile,
         config = function()
             local rainbow_delimiters = require("rainbow-delimiters")
             vim.g.rainbow_delimiters = {
@@ -189,6 +190,13 @@ return {
                 },
             }
         end,
+    },
+    {
+        "RaafatTurki/hex.nvim",
+        opts = {},
+        keys = {
+            {"<leader>eh", "<cmd>:HexToggle<cr>", desc = "Toggle Hex Editor"}
+        }
     },
 }
 

@@ -52,19 +52,67 @@ return {
         }
     },
     {
-        'RaafatTurki/hex.nvim',
-        opts = {},
-        keys = {
-            {"<leader>Eh", "<cmd>:HexToggle<cr>", desc = "Toggle Hex Editor"}
-        }
-    },
-    {
         "echasnovski/mini.comment",
         event = LazyFile,
         opts = {
             current_line = "gcc",
             comment_visual = "gc"
        }
-    }
+    },
+    {
+        "sindrets/diffview.nvim",
+        cmd = {
+            "DiffviewOpen",
+            "DiffviewFileHistory",
+            "DiffviewToggleFiles",
+            "DiffviewRefresh"
+        },
+        keys = {
+            {"<leader>Gd", "<cmd>DiffviewOpen<cr>", desc = "Open Diff View"},
+            {"<leader>GD", "<cmd>DiffviewClose<cr>", desc = "Close Diff View"},
+            {"<leader>Gr", "<cmd>DiffViewRefresh<cr>", desc = "Refresh Diff View"},
+            {"<leader>Gh", "<cmd>DiffviewFileHistory<cr>", desc = "Toggle File History"}
+        }
+    },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = {"MarkdownPreviewToggle", "MarkdownPreview"},
+        keys = {
+            {"<leader>em", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Preview", keymap_opts}
+        },
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
+    {
+        "akinsho/toggleterm.nvim",
+        cmd = {
+            "ToggleTerm",
+            "TermExec",
+        },
+        keys = {
+            {"<leader>t", "<cmd>ToggleTerm<cr>", desc = "Open Terminal"},
+            {
+                "<leader>Gl",
+                function()
+                    lazygit:toggle()
+                end,
+                desc = "lazygit"
+            }
+        },
+        init = function()
+            Terminal = require('toggleterm.terminal').Terminal
+            lazygit  = Terminal:new({cmd = "lazygit"})
+        end,
+        opts = {
+            direction = "float", -- vertical horizontal tab
+            persist_mode = true,
+            border = "shadow"
+        },
+    },
+    {
+        "simrat39/symbols-outline.nvim",
+        cmd = "SymbolsOutline",
+        keys = {{"<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline"}},
+        config = true,
+    },
 }
 

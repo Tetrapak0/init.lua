@@ -21,7 +21,7 @@ return {
                 c = {name = "+Code"},
                 C = {name = "+Convert"},
                 d = {name = "+Diagnostics"},
-                E = {name = "+Editor"},
+                e = {name = "+Editor", w = {"<cmd>lua vim.o.wrap = not vim.o.wrap<cr>", "Toggle Line Wrap", noremap = true, silent = true}},
                 f = {name = "+File"},
                 g = {name = "+goto"},
                 G = {name = "+Git"},
@@ -41,6 +41,8 @@ return {
         config = function()
             require("bufferline").setup({
                 options = {
+                    close_command = function(n) require("mini.bufremove").delete(n, false) end,
+                    right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
                     offsets = {
                         {
                             filetype = "NvimTree",
@@ -51,6 +53,16 @@ return {
                         {
                             filetype = "alpha"
                         },
+                        {
+                            filetype = "Trouble",
+                            text = "Trouble",
+                            text_align = "right"
+                        },
+                        {
+                            filetype = "Outline",
+                            text = "Symbol Outline",
+                            text_align = "right"
+                        }
                     },
                     diagnostics =  "nvim_lsp",
                     show_close_icon = false,
