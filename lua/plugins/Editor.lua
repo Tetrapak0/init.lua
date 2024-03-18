@@ -195,7 +195,7 @@ return {
         "RaafatTurki/hex.nvim",
         opts = {},
         keys = {
-            {"<leader>eh", "<cmd>:HexToggle<cr>", desc = "Toggle Hex Editor"}
+            {"<leader>Eh", "<cmd>:HexToggle<cr>", desc = "Toggle Hex Editor"}
         }
     },
 }

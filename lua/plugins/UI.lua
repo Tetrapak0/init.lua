@@ -21,7 +21,7 @@ return {
                 c = {name = "+Code"},
                 C = {name = "+Convert"},
                 d = {name = "+Diagnostics"},
-                e = {name = "+Editor", w = {"<cmd>lua vim.o.wrap = not vim.o.wrap<cr>", "Toggle Line Wrap", noremap = true, silent = true}},
+                E = {name = "+ditor", w = {"<cmd>lua vim.o.wrap = not vim.o.wrap<cr>", "Toggle Line Wrap", noremap = true, silent = true}},
                 f = {name = "+File"},
                 g = {name = "+goto"},
                 G = {name = "+Git"},
@@ -113,21 +113,5 @@ return {
             })
         end,
     },
-    --"goolord/alpha-nvim",
-    --dependencies = { "nvim-tree/nvim-web-devicons" },
-    --event = "VimEnter",
-    --config = function()
-    --    local dashboard = require("alpha.themes.dashboard")
-    --    dashboard.section.buttons.val = {
-    --        dashboard.button("n", "    New File", "<cmd>ene<cr>"),
-    --        dashboard.button("r", "󱋢    Recent Files", "<cmd>Telescope oldfiles<cr>"),
-    --        dashboard.button("f", "󰈞    Find File", "<cmd>Telescope find_files<cr>"),
-    --        dashboard.button("g", "    Live grep", "<cmd>Telescope live_grep<cr>"),
-    --        dashboard.button("s", "    Restore Session", "<cmd>lua require('persistence').load()<cr>"),
-    --        dashboard.button("l", "󰒲    Lazy", "<cmd>Lazy<cr>"),
-    --        dashboard.button("q", "󰩈    Quit", "<cmd>wqa<cr>"),
-    --    }
-    --    require('alpha').setup(dashboard.opts)
-    --end,
 }
 

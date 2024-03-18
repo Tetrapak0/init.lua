@@ -75,7 +75,7 @@ return {
             diagnostics = {enable = true},
         },
         keys = {
-            {"<leader>E", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree"}
+            {"<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree"}
         }
     },
     {
