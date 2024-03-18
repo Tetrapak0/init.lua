@@ -96,7 +96,7 @@ return {
         opts = {
             keywords = {
                 FIX = {
-                    alt = {"URGENT"}
+                    alt = {"URGENT", "FIXME"}
                 },
                 WARN = {
                     alt = {"WTF"}
