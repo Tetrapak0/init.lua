@@ -44,7 +44,7 @@ return {
         "nvim-telescope/telescope-file-browser.nvim",
         cmd = "Telescope file_browser",
         keys = {
-            {"<leader>fs", "<cmd>Telescope file_browser", desc = "Telescope File Browser", keymap_opts}
+            {"<leader>fs", "<cmd>Telescope file_browser<cr>", desc = "Telescope File Browser", keymap_opts}
         },
         dependencies = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
     },
