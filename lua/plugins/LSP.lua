@@ -4,7 +4,6 @@ local servers = {
     "jsonls", "marksman",
     "lua_ls", "vimls",
     "pyright",
-    "rust_analyzer",
     "eslint",
 }
 local keymap_opts = {silent = true, noremap = true}
@@ -124,7 +123,6 @@ return {
                     "markdown", "markdown_inline",
                     "json", "gitignore", "ini", "xml", "yaml",
                     "python",
-                    "rust",
                 }
             })
         end,
