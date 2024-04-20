@@ -37,7 +37,7 @@ return {
     {
         'akinsho/bufferline.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
-        event = "VeryLazy",
+        event = LazyFile,
         config = function()
             require("bufferline").setup({
                 options = {
@@ -88,7 +88,7 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
+        -- event = "VeryLazy",
         dependencies = {"nvim-tree/nvim-web-devicons"},
         config = function()
             vim.o.laststatus = 3
