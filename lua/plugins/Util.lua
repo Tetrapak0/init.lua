@@ -83,32 +83,6 @@ return {
         build = function() vim.fn["mkdp#util#install"]() end,
     },
     {
-        "akinsho/toggleterm.nvim",
-        cmd = {
-            "ToggleTerm",
-            "TermExec",
-        },
-        keys = {
-            {"<leader>t", "<cmd>ToggleTerm<cr>", desc = "Open Terminal"},
-            {
-                "<leader>Gl",
-                function()
-                    lazygit:toggle()
-                end,
-                desc = "lazygit"
-            }
-        },
-        init = function()
-            Terminal = require('toggleterm.terminal').Terminal
-            lazygit  = Terminal:new({cmd = "lazygit"})
-        end,
-        opts = {
-            direction = "float", -- vertical horizontal tab
-            persist_mode = true,
-            border = "shadow"
-        },
-    },
-    {
         "simrat39/symbols-outline.nvim",
         cmd = "SymbolsOutline",
         keys = {{"<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline"}},
