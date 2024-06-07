@@ -95,7 +95,7 @@ return {
             require("lualine").setup({
                 options = {
                     globalstatus = true,
-                    theme = "tokyonight",
+                    theme = "vscode",
                 },
                 sections = {
                     lualine_c = {
