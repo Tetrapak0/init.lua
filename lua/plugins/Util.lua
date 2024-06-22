@@ -1,5 +1,6 @@
 local keymap_opts = {silent = true, noremap = true}
 local LazyFile = {"BufReadPost", "BufWritePost", "BufNewFile"}
+local BuildCord = nil
 
 return {
     {
@@ -87,6 +88,82 @@ return {
         cmd = "SymbolsOutline",
         keys = {{"<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline"}},
         config = true,
+    },
+    {
+        "vyfor/cord.nvim",
+        event = LazyFile,
+        init = function()
+            local username, homepath
+            if vim.loop.os_uname().sysname == "Windows_NT" then
+                username = os.getenv("USERNAME")
+                homepath = os.getenv("USERPROFILE")
+                BuildCord = "build.bat"
+            else
+                username = os.getenv("USER")
+                homepath = os.getenv("HOME")
+                BuildCord = "./build"
+            end
+            if username == nil then
+                username = ""
+            else
+                username = tostring(username)
+            end
+            if homepath == nil then
+                homepath = ""
+            else
+                homepath = tostring(homepath)
+            end
+            require("cord").setup({
+                usercmds = true,        -- Enable user commands
+                timer = {
+                    enable = true,             -- Enable automatically updating presence
+                    interval = 1500,           -- Interval between presence updates in milliseconds (min 500)
+                    reset_on_idle = false,     -- Reset start timestamp on idle
+                    reset_on_change = false,   -- Reset start timestamp on presence change
+                },
+                editor = {
+                    image = nil,         -- Image ID or URL in case a custom client id is provided
+                    client = 'neovim',   -- vim, neovim, lunarvim, nvchad, astronvim or your application's client id
+                    tooltip = 'Neovim',
+                },
+                display = {
+                    show_time = true,             -- Display start timestamp
+                    show_repository = true,
+                    show_cursor_position = true,
+                    swap_fields = false,          -- If enabled, workspace is displayed first
+                    workspace_blacklist = {username, homepath},
+                },
+                lsp = {
+                    show_problem_count = true,
+                    severity = 1,           -- 1 = Error, 2 = Warning, 3 = Info, 4 = Hint
+                    scope = "workspace",    -- buffer or workspace
+                },
+                idle = {
+                    enable = true,
+                    show_status = true,
+                    timeout = 300000,
+                    disable_on_focus = true,
+                    text = 'Idle',
+                    tooltip = 'Idle',
+                },
+                text = {
+                    viewing = "Viewing {}",
+                    editing = "Editing {}",
+                    file_browser = "",
+                    plugin_manager = "",
+                    lsp_manager = "",
+                    vcs = "",
+                    workspace = "In {}",
+                },
+                buttons = {
+                    {
+                        label = 'View Repository',
+                        url = 'git'
+                    },
+                },
+            })
+        end,
+        build = BuildCord
     },
 }
 
