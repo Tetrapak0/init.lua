@@ -57,17 +57,6 @@ return {
         opts = {}
     },
     {
-        "folke/trouble.nvim",
-        opts = {
-            mode = "workspace_diagnostics",
-            use_diagnostic_signs = true,
-            position = "right",
-        },
-        keys = {
-            {"<leader>dt", "<cmd>TroubleToggle<cr>", desc = "Show Trouble", keymap_opts}
-        }
-    },
-    {
         "nvim-tree/nvim-tree.lua",
         opts = {
             view = {width = 32},

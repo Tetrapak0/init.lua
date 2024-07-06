@@ -90,7 +90,6 @@ return {
         event = LazyFile,
         keys = {
             {"<leader>ct", "<cmd>TodoTelescope<cr>", desc = "Open TODO Telescope"},
-            {"<leader>ch", "<cmd>TodoTrouble<cr>", desc = "Open TODO Trouble"}
         },
         dependencies = {"nvim-lua/plenary.nvim"},
         opts = {
