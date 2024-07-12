@@ -162,6 +162,7 @@ return {
                     },
                 },
             })
+            vim.cmd("CordDisconnect");
         end,
         build = BuildCord
     },
