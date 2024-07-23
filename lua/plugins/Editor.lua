@@ -52,7 +52,7 @@ return {
         "echasnovski/mini.pairs",
         event = "InsertEnter",
         opts = {
-            modes = {insert = true, terminal = true, command = true},
+            modes = {insert = true, command = true},
             mappings = {
                 ['('] = {action = "open", pair = "()", neigh_pattern = "[^\\]."},
                 ['['] = {action = "open", pair = "[]", neigh_pattern = "[^\\]."},
@@ -65,7 +65,11 @@ return {
                 ['"'] = {action = "closeopen", pair = '""', neigh_pattern = "[^\\].", register = {cr = false}},
                 ["'"] = {action = "closeopen", pair = "''", neigh_pattern = "[^%a\\].", register = {cr = false}},
                 ['`'] = {action = "closeopen", pair = "``", neigh_pattern = "[^\\].", register = {cr = false}},
-            }
+            },
+            skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+            skip_ts = {"string"},
+            skip_unbalanced = true,
+            markdown = true,
         }
     },
     {

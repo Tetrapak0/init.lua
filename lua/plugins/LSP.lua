@@ -1,10 +1,9 @@
 local servers = {
-    "asm_lsp", "clangd", "cmake", "neocmake",
-    "cssls", "html", "svelte", "vuels", "tsserver",
+    "asm_lsp", "clangd", "neocmake",
+    "cssls", "html", "vuels", "tsserver",
     "jsonls", "marksman",
     "lua_ls", "vimls",
     "pyright",
-    "eslint",
 }
 local keymap_opts = {silent = true, noremap = true}
 local LazyFile = {"BufReadPost", "BufWritePost", "BufNewFile"}
@@ -72,13 +71,31 @@ return {
             local cmp_nvim_lsp = require("cmp_nvim_lsp")
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-
-            for _, lsp in ipairs(servers) do
-                lspconfig[lsp].setup({
-                    capabilities = capabilities,
-                })
-            end
-            lspconfig["lua_ls"].setup({
+            lspconfig.asm_lsp.setup({capabilities = capabilities})
+            lspconfig.clangd.setup({
+                capabilities = capabilities,
+                cmd = {
+                    "clangd",
+                    "--all-scopes-completion",
+                    "--background-index",
+                    "--background-index-priority=normal",
+                    "--clang-tidy",
+                    "--completion-style=detailed",
+                    "--limit-references=0",
+                    "--limit-results=0",
+                    "--rename-file-limit=0",
+                    "--fallback-style=llvm",
+                }
+            })
+            lspconfig.neocmake.setup({capabilities = capabilities})
+            lspconfig.cssls.setup({capabilities = capabilities})
+            lspconfig.html.setup({capabilities = capabilities})
+            lspconfig.vuels.setup({capabilities = capabilities})
+            lspconfig.tsserver.setup({capabilities = capabilities})
+            lspconfig.jsonls.setup({capabilities = capabilities})
+            lspconfig.marksman.setup({capabilities = capabilities})
+            lspconfig.lua_ls.setup({
+                capabilities = capabilities,
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -87,17 +104,18 @@ return {
                     }
                 }
             })
+            lspconfig.pyright.setup({capabilities = capabilities})
             local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
             for type, icon in pairs(signs) do
-                local hl = "DiagnosticSign" .. type
-                vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+               local hl = "DiagnosticSign" .. type
+               vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
             end
         end,
         keys = {
-            {"<leader>gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to Definition"},
-            {"<leader>gD", vim.lsp.buf.declaration, desc = "Go to Declaration"},
-            {"<leader>gr", "<cmd>Telescope lsp_references<cr>", desc = "Show References"},
-            {"<leader>gt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Go to Type Definition"},
+            {"gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to Definition", keymap_opts},
+            {"gD", vim.lsp.buf.declaration, desc = "Go to Declaration"},
+            {"gr", "<cmd>Telescope lsp_references<cr>", desc = "Show References"},
+            {"gt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Go to Type Definition"},
             {"<leader>ca", vim.lsp.buf.code_action, desc = "Show Code Actions"},
             {"<leader>cr", vim.lsp.buf.rename, desc = "Rename Symbol"},
             {"<leader>dd", "<cmd>Telescope diagnostics<cr>", desc = "Show File Diagnostics"},
@@ -137,8 +155,7 @@ return {
         },
     },
     {
-        "folke/neodev.nvim",
-        event = LazyFile,
+        "folke/neoconf.nvim",
         opts = {},
     },
     {

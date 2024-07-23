@@ -9,30 +9,30 @@ return {
             vim.o.timeoutlen = 300
         end,
         opts = {
-            noremap = true,
+            sort = {"manual"},
+            icons = {
+                mappings = false,
+            },
+            spec = {
+                mode = {'n', 'v'},
+                {"<leader>b", group = "Buffer"},
+                {"<leader>C", group = "Convert"},
+                {"<leader>c", group = "Code"},
+                {"<leader>d", group = "Diagnostics"},
+                {"<leader>E", group = "Editor"},
+                {"<leader>Ew", "<cmd>lua vim.o.wrap = not vim.o.wrap<cr>", desc = "Toggle line wrap"},
+                {"<leader>f", group = "File"},
+                {"<leader>G", group = "Git"},
+                {"g", group = "goto"},
+                {"<leader>h", group = "Help"},
+                {"<leader>l", "<cmd>Lazy<cr>", desc = "Lazy"},
+                {"<leader>S", group = "Session"},
+                {"<leader>s", group = "Search"},
+                {"<leader>U", group = "UI"},
+            },
+            noreap = true,
             silent = true,
         },
-        config = function(_, opts)
-            vim.keymap.set('n', "<leader>l", ":Lazy<cr>")
-            local wk = require("which-key")
-            wk.setup(opts)
-            wk.register({
-                b = {name = "+Buffer"},
-                c = {name = "+Code"},
-                C = {name = "+Convert"},
-                d = {name = "+Diagnostics"},
-                E = {name = "+ditor", w = {"<cmd>lua vim.o.wrap = not vim.o.wrap<cr>", "Toggle Line Wrap", noremap = true, silent = true}},
-                f = {name = "+File"},
-                g = {name = "+goto"},
-                G = {name = "+Git"},
-                h = {name = "+Help"},
-                l = {"<cmd>Lazy<cr>", "Lazy", noremap = true, silent = true},
-                s = {name = "+Search"},
-                S = {name = "+Session"},
-                U = {name = "+UI"},
-            },
-            {prefix = "<leader>"})
-        end
     },
     {
         'akinsho/bufferline.nvim',
