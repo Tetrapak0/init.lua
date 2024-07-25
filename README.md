@@ -1,7 +1,7 @@
 # init.lua - My Neovim configuration
 Feel free to open a Pull Request with your additions.
 
-## Plugins (48)
+## Plugins (47)
 ### lua/config/lazy.lua: 
 - [Lazy.nvim](https://github.com/folke/lazy.nvim) - Package manager
 ### lua/plugins/Editor.lua
@@ -38,7 +38,6 @@ Feel free to open a Pull Request with your additions.
 ### lua/plugins/Themes.lua
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 ### lua/plugins/UI.lua
-- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) - Provides a quick preview of open buffers (A tab bar)
 - [dressing.nvim](https://github.com/stevearc/dressing.nvim) - Improve vim.ui
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - Better status line
 - [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) - Sidebar file explorer
