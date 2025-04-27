@@ -1,6 +1,5 @@
 local servers = {
     "asm_lsp", "clangd", "neocmake",
-    "cssls", "html", "vuels", "tsserver",
     "jsonls", "marksman",
     "lua_ls", "vimls",
     "pyright",
@@ -136,8 +135,7 @@ return {
                 sync_install = false,
                 ensure_installed = {
                     "bash",
-                    "nasm", "c", "cpp", "cmake", "meson", "ninja",
-                    "css", "html", "javascript", "typescript", "tsx",
+                    "nasm", "c", "cpp", "cmake", "meson",
                     "lua", "vim", "vimdoc",
                     "markdown", "markdown_inline",
                     "json", "gitignore", "ini", "xml", "yaml",
